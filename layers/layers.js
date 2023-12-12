@@ -1,19 +1,7 @@
 var wms_layers = [];
 
 
-        var lyr_BingMap_0 = new ol.layer.Tile({
-            'title': 'Bing Map',
-            'type': 'base',
-            'opacity': 1.000000,
-            
-            
-            source: new ol.source.XYZ({
-    attributions: ' ',
-                url: 'https://ecn.dynamic.t0.tiles.virtualearth.net/comp/CompositionHandler/{q}?mkt=en-us&it=G,VE,BX,L,LA&shading=hill'
-            })
-        });
-
-        var lyr_OSMStandard_1 = new ol.layer.Tile({
+        var lyr_OSMStandard_0 = new ol.layer.Tile({
             'title': 'OSM Standard',
             'type': 'base',
             'opacity': 1.000000,
@@ -24,64 +12,60 @@ var wms_layers = [];
                 url: 'http://tile.openstreetmap.org/{z}/{x}/{y}.png'
             })
         });
-var format_regions_be_2 = new ol.format.GeoJSON();
-var features_regions_be_2 = format_regions_be_2.readFeatures(json_regions_be_2, 
+var format_Limitesdeszonesprotges_1 = new ol.format.GeoJSON();
+var features_Limitesdeszonesprotges_1 = format_Limitesdeszonesprotges_1.readFeatures(json_Limitesdeszonesprotges_1, 
             {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
-var jsonSource_regions_be_2 = new ol.source.Vector({
+var jsonSource_Limitesdeszonesprotges_1 = new ol.source.Vector({
     attributions: ' ',
 });
-jsonSource_regions_be_2.addFeatures(features_regions_be_2);
-var lyr_regions_be_2 = new ol.layer.Vector({
+jsonSource_Limitesdeszonesprotges_1.addFeatures(features_Limitesdeszonesprotges_1);
+var lyr_Limitesdeszonesprotges_1 = new ol.layer.Vector({
                 declutter: true,
-                source:jsonSource_regions_be_2, 
-                style: style_regions_be_2,
+                source:jsonSource_Limitesdeszonesprotges_1, 
+                style: style_Limitesdeszonesprotges_1,
                 interactive: true,
-    title: 'regions_be<br />\
-    <img src="styles/legend/regions_be_2_0.png" /> Bruxelles-Capitale<br />\
-    <img src="styles/legend/regions_be_2_1.png" /> Flandre<br />\
-    <img src="styles/legend/regions_be_2_2.png" /> Wallonie<br />\
-    <img src="styles/legend/regions_be_2_3.png" /> <br />'
-        });
-var format_Buildings_3 = new ol.format.GeoJSON();
-var jsonSource_Buildings_3 = new ol.source.Vector({
+                title: '<img src="styles/legend/Limitesdeszonesprotges_1.png" /> Limites des zones protégées'
+            });
+var format_Phytodistricts_2 = new ol.format.GeoJSON();
+var features_Phytodistricts_2 = format_Phytodistricts_2.readFeatures(json_Phytodistricts_2, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_Phytodistricts_2 = new ol.source.Vector({
     attributions: ' ',
-    format: format_Buildings_3
-});var lyr_Buildings_3 = new ol.layer.Vector({
-    declutter: true,
-    source: jsonSource_Buildings_3, 
-    style: style_Buildings_3,
-    interactive: true,
-    title: "Buildings"
 });
-
-function getBuildings_3Json(geojson) {
-    var features_Buildings_3 = format_Buildings_3.readFeatures(geojson);
-    jsonSource_Buildings_3.addFeatures(features_Buildings_3);
-}
-var lyr_Bruitferroviaireindicateurlden2016_4 = new ol.layer.Tile({
-                            source: new ol.source.TileWMS(({
-                              url: "https://wms.environnement.brussels/be_wms",
+jsonSource_Phytodistricts_2.addFeatures(features_Phytodistricts_2);
+var lyr_Phytodistricts_2 = new ol.layer.Vector({
+                declutter: true,
+                source:jsonSource_Phytodistricts_2, 
+                style: style_Phytodistricts_2,
+                interactive: true,
+                title: '<img src="styles/legend/Phytodistricts_2.png" /> Phytodistricts'
+            });
+var format_Pointsdeprsence_3 = new ol.format.GeoJSON();
+var features_Pointsdeprsence_3 = format_Pointsdeprsence_3.readFeatures(json_Pointsdeprsence_3, 
+            {dataProjection: 'EPSG:4326', featureProjection: 'EPSG:3857'});
+var jsonSource_Pointsdeprsence_3 = new ol.source.Vector({
     attributions: ' ',
-                              params: {
-                                "LAYERS": "bruenvi_noise_rail_lden_16",
-                                "TILED": "true",
-                                "VERSION": "1.3.0"},
-                            })),
-                            title: " Bruit ferroviaire indicateur lden 2016",
-                            opacity: 1.000000,
-                            
-                            
-                          });
-              wms_layers.push([lyr_Bruitferroviaireindicateurlden2016_4, 1]);
+});
+jsonSource_Pointsdeprsence_3.addFeatures(features_Pointsdeprsence_3);
+var lyr_Pointsdeprsence_3 = new ol.layer.Vector({
+                declutter: true,
+                source:jsonSource_Pointsdeprsence_3, 
+                style: style_Pointsdeprsence_3,
+                interactive: true,
+                title: '<img src="styles/legend/Pointsdeprsence_3.png" /> Points de présence'
+            });
 
-lyr_BingMap_0.setVisible(false);lyr_OSMStandard_1.setVisible(true);lyr_regions_be_2.setVisible(true);lyr_Buildings_3.setVisible(false);lyr_Bruitferroviaireindicateurlden2016_4.setVisible(true);
-var layersList = [lyr_BingMap_0,lyr_OSMStandard_1,lyr_regions_be_2,lyr_Buildings_3,lyr_Bruitferroviaireindicateurlden2016_4];
-lyr_regions_be_2.set('fieldAliases', {'fid': 'fid', 'REGION_NAM': 'REGION_NAM', });
-lyr_Buildings_3.set('fieldAliases', {'BU_INSPIRE_ID': 'BU_INSPIRE_ID', 'BU_CAPAKEY': 'BU_CAPAKEY', 'BU_STATUS': 'BU_STATUS', 'BU_CATEGORY': 'BU_CATEGORY', 'BU_ID': 'BU_ID', });
-lyr_regions_be_2.set('fieldImages', {'fid': '', 'REGION_NAM': '', });
-lyr_Buildings_3.set('fieldImages', {'BU_INSPIRE_ID': '', 'BU_CAPAKEY': '', 'BU_STATUS': '', 'BU_CATEGORY': '', 'BU_ID': '', });
-lyr_regions_be_2.set('fieldLabels', {'fid': 'no label', 'REGION_NAM': 'no label', });
-lyr_Buildings_3.set('fieldLabels', {'BU_INSPIRE_ID': 'no label', 'BU_CAPAKEY': 'no label', 'BU_STATUS': 'no label', 'BU_CATEGORY': 'no label', 'BU_ID': 'no label', });
-lyr_Buildings_3.on('precompose', function(evt) {
+lyr_OSMStandard_0.setVisible(true);lyr_Limitesdeszonesprotges_1.setVisible(true);lyr_Phytodistricts_2.setVisible(true);lyr_Pointsdeprsence_3.setVisible(true);
+var layersList = [lyr_OSMStandard_0,lyr_Limitesdeszonesprotges_1,lyr_Phytodistricts_2,lyr_Pointsdeprsence_3];
+lyr_Limitesdeszonesprotges_1.set('fieldAliases', {'Id': 'Id', 'CLASS': 'CLASS', 'Type': 'Type', 'Superficie': 'Superficie', });
+lyr_Phytodistricts_2.set('fieldAliases', {'Id': 'Id', 'Nom': 'Nom', 'Nom_chif': 'Nom_chif', });
+lyr_Pointsdeprsence_3.set('fieldAliases', {'OBJECTID': 'OBJECTID', 'Specie': 'Specie', 'X': 'X', 'Y': 'Y', 'bio_1': 'bio_1', 'bio_10': 'bio_10', 'bio_11': 'bio_11', 'bio_12': 'bio_12', 'bio_13': 'bio_13', 'bio_14': 'bio_14', 'bio_15': 'bio_15', 'bio_16': 'bio_16', 'bio_17': 'bio_17', 'bio_18': 'bio_18', 'bio_19': 'bio_19', 'bio_2': 'bio_2', 'bio_3': 'bio_3', 'bio_4': 'bio_4', 'bio_5': 'bio_5', 'bio_6': 'bio_6', 'bio_7': 'bio_7', 'bio_8': 'bio_8', 'bio_9': 'bio_9', 'POINT_X': 'POINT_X', 'POINT_Y': 'POINT_Y', });
+lyr_Limitesdeszonesprotges_1.set('fieldImages', {'Id': 'Range', 'CLASS': 'TextEdit', 'Type': 'Range', 'Superficie': '', });
+lyr_Phytodistricts_2.set('fieldImages', {'Id': 'TextEdit', 'Nom': 'TextEdit', 'Nom_chif': 'TextEdit', });
+lyr_Pointsdeprsence_3.set('fieldImages', {'OBJECTID': 'TextEdit', 'Specie': 'TextEdit', 'X': 'TextEdit', 'Y': 'TextEdit', 'bio_1': 'TextEdit', 'bio_10': 'TextEdit', 'bio_11': 'TextEdit', 'bio_12': 'TextEdit', 'bio_13': 'TextEdit', 'bio_14': 'TextEdit', 'bio_15': 'TextEdit', 'bio_16': 'TextEdit', 'bio_17': 'TextEdit', 'bio_18': 'TextEdit', 'bio_19': 'TextEdit', 'bio_2': 'TextEdit', 'bio_3': 'TextEdit', 'bio_4': 'TextEdit', 'bio_5': 'TextEdit', 'bio_6': 'TextEdit', 'bio_7': 'TextEdit', 'bio_8': 'TextEdit', 'bio_9': 'TextEdit', 'POINT_X': 'TextEdit', 'POINT_Y': 'TextEdit', });
+lyr_Limitesdeszonesprotges_1.set('fieldLabels', {'Id': 'inline label', 'CLASS': 'inline label', 'Type': 'inline label', 'Superficie': 'inline label', });
+lyr_Phytodistricts_2.set('fieldLabels', {'Id': 'inline label', 'Nom': 'inline label', 'Nom_chif': 'inline label', });
+lyr_Pointsdeprsence_3.set('fieldLabels', {'OBJECTID': 'inline label', 'Specie': 'inline label', 'X': 'inline label', 'Y': 'inline label', 'bio_1': 'inline label', 'bio_10': 'inline label', 'bio_11': 'inline label', 'bio_12': 'inline label', 'bio_13': 'inline label', 'bio_14': 'inline label', 'bio_15': 'inline label', 'bio_16': 'inline label', 'bio_17': 'inline label', 'bio_18': 'inline label', 'bio_19': 'inline label', 'bio_2': 'inline label', 'bio_3': 'inline label', 'bio_4': 'inline label', 'bio_5': 'inline label', 'bio_6': 'inline label', 'bio_7': 'inline label', 'bio_8': 'inline label', 'bio_9': 'inline label', 'POINT_X': 'no label', 'POINT_Y': 'no label', });
+lyr_Pointsdeprsence_3.on('precompose', function(evt) {
     evt.context.globalCompositeOperation = 'normal';
 });
